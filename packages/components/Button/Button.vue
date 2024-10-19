@@ -4,5 +4,5 @@ defineOptions({
 });
 </script>
 <template>
-  <div>dsfdsgsgdfgfd</div>
+  <div>按钮</div>
 </template>
