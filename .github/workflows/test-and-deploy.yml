@@ -1,4 +1,4 @@
-name: Test and deploy simplified
+name: Test and deploy
 
 on:
   push:
@@ -27,9 +27,9 @@ jobs:
     needs: setup
     steps:
       - name: Build hooks
-        run: npm run build-hooks
+        run: pnpm run build-hooks
       - name: Run tests
-        run: npm run test
+        run: pnpm run test
 
   build:
     name: Build docs
@@ -37,12 +37,12 @@ jobs:
     needs: test
     steps:
       - name: Build docs
-        run: npm run docs:build
+        run: pnpm run docs:build
       - name: Upload docs
         uses: actions/upload-artifact@v3
         with:
           name: docs
-          path:./packages/docs/.vitepress/dist
+          path: ./packages/docs/.vitepress/dist
 
   deploy:
     name: Deploy to GitHub Pages
@@ -57,4 +57,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir:.
+          publish_dir: .
