@@ -10,8 +10,17 @@ jobs:
     name: Run Lint and Test
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Frontend (call reusable workflow)
-        uses: ./.github/workflows/setup-frontend.yml
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install pnpm
+        run: npm install -g pnpm@^6.14.7
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
       - name: Build hooks
         run: pnpm run build-hooks
       - name: Run tests
@@ -23,8 +32,17 @@ jobs:
     needs: test
 
     steps:
-      - name: Setup Frontend (call reusable workflow)
-        uses: ./.github/workflows/setup-frontend.yml
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install pnpm
+        run: npm install -g pnpm@^6.14.7
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build docs
         run: pnpm run docs:build
