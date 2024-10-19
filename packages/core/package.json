@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@xlz-ui/compontents": "workspace:*"
+    "@xlz-ui/components": "workspace:*"
   },
   "author": "",
   "license": "ISC"
