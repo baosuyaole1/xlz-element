@@ -1,0 +1,19 @@
+name: Setup Frontend
+on:
+  workflow_call:
+jobs:
+  install_dependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install pnpm
+        run: npm install -g pnpm@^6.14.7
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
